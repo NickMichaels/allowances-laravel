@@ -2,7 +2,8 @@
 An application to track allowances across different sub accounts for multiple children
 
 # Initial Requirements
-Allowances App  Make an application to store allowance information, given that :
+Allowances App  
+* Make an application to store allowance information, given that :
 * Each child accrues allowance at a different weekly rate, based on their age.
 * Each child has a Spend, Save and Give “bucket” or account, with the ability to define how muhc weekly allowance goes into each bucket
 * As time passes, have a task update their balance every Friday
@@ -13,3 +14,5 @@ Allowances App  Make an application to store allowance information, given th
 
 # Future 
 * Add the ability to import data from a csv
+
+# Models
