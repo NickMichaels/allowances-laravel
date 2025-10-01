@@ -10,4 +10,6 @@ Allowances App  Make an application to store allowance information, given th
 * Add the ability to submit unscheduled deposits into their account
 * Add a dashboard that shows Spend, Save and Give balances for each child
 * Add a dashboard that shows Spend, Save and Give balances for every child
+
+# Future 
 * Add the ability to import data from a csv
