@@ -13,10 +13,15 @@
         <button>Log out</button>
     </form>
 
-    <div style="border : 3px solid black;">
-        <h2><a href="/create-holder/">Create a New Account Holder</a></h2>
-
-    </div>
+    @if(auth()->id() === 1)
+        <div style="border : 3px solid black;">
+            <h2><a href="/create-holder/">Create a New Account Holder</a></h2>
+        </div>
+    @else
+        <div style="border : 3px solid black;">
+            <h2><a href="/nowhere/">Future Features</a></h2>
+        </div>
+    @endif
 
 
     @else

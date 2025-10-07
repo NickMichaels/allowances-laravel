@@ -34,7 +34,7 @@ class HolderController extends Controller
         // Route::get('/edit-post/{post}', [PostController::class, 'showEditScreen']);
         // Laravel automatically looks this up for us
         if (auth()->user()->id !== 1) {
-            //return redirect('/');
+            return redirect('/');
         }
         $users = [];
         if (auth()->check()) {
