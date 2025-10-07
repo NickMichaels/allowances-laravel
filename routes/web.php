@@ -4,6 +4,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HolderController;
+use App\Http\Controllers\AccountController;
 
 Route::get('/', function () {
     $users = [];
@@ -22,3 +23,6 @@ Route::post('/login', [UserController::class, 'login']);
 // Account Holder creation related routes
 Route::get('/create-holder', [HolderController::class, 'showCreateScreen']);
 Route::post('/create-holder', [HolderController::class, 'createHolder']);
+
+Route::get('/create-account', [AccountController::class, 'showCreateScreen']);
+Route::post('/create-account', [AccountController::class, 'createHolder']);

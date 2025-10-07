@@ -16,6 +16,7 @@
     @if(auth()->id() === 1)
         <div style="border : 3px solid black;">
             <h2><a href="/create-holder/">Create a New Account Holder</a></h2>
+            <h2><a href="/create-account/">Create a New Account</a></h2>
         </div>
     @else
         <div style="border : 3px solid black;">
