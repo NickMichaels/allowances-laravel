@@ -38,7 +38,11 @@ class HolderController extends Controller
         }
         $users = [];
         if (auth()->check()) {
-            $users = User::where('id', '!=' , 1)->get();
+            $users = User::leftJoin('holders', 'holders.user_id' , '=', 'users.id')
+                ->whereNull('holders.user_id')
+                ->select('users.*')
+                ->where('users.id', '!=', 1)
+                ->get();
         }
         return view('create-holder',['users' => $users]);
     }
