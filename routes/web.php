@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use App\Models\Holder;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HolderController;
@@ -8,10 +9,12 @@ use App\Http\Controllers\AccountController;
 
 Route::get('/', function () {
     $users = [];
+    $holders = [];
     if (auth()->check()) {
         $users = User::where('id', '!=' , 1)->get();
+        $holders = Holder::all();
     }
-    return view('home', ['users' => $users]);
+    return view('home', ['users' => $users, 'holders' => $holders]);
 });
 
 // User registration routes

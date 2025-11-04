@@ -18,6 +18,22 @@
             <h2><a href="/create-holder/">Create a New Account Holder</a></h2>
             <h2><a href="/create-account/">Create a New Account</a></h2>
         </div>
+        <div style="border : 3px solid black;">
+            <h2>All Account Holders</h2>
+            @foreach($holders as $holder)
+                <div style="background-color: gray; padding: 10px; margin: 10px;">
+                    <h3>{{$holder->name}}</h3>
+                    <p><a href="/edit-holder/{{$holder->id}}">Edit</a></p>
+                    <form action="/delete-holder/{{$holder->id}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button>Delete</button>
+                    </form>
+                </div>
+            @endforeach
+        </div>
+
+
     @else
         <div style="border : 3px solid black;">
             <h2><a href="/nowhere/">Future Features</a></h2>
