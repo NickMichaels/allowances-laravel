@@ -25,7 +25,11 @@ Route::post('/login', [UserController::class, 'login']);
 
 // Account Holder creation related routes
 Route::get('/create-holder', [HolderController::class, 'showCreateScreen']);
+Route::get('/edit-holder/{holder}', [HolderController::class, 'showEditScreen']);
+Route::post('/edit-holder/{holder}', [HolderController::class, 'updateHolder']);
 Route::post('/create-holder', [HolderController::class, 'createHolder']);
 
+
 Route::get('/create-account', [AccountController::class, 'showCreateScreen']);
+Route::get('/edit-account', [HolderController::class, 'showEditScreen']);
 Route::post('/create-account', [AccountController::class, 'createHolder']);
