@@ -32,7 +32,7 @@ class AccountController extends Controller
         $holders = [];
         if (auth()->check()) {
             $holders = Holder::leftJoin('accounts', 'accounts.holder_id' , '=', 'holders.id')
-                ->whereNull('accounts.holder_id')
+               // ->whereNull('accounts.holder_id')
                 ->select('holders.*')
                 ->get();
         }
