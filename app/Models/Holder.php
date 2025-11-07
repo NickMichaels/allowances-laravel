@@ -28,6 +28,18 @@ class Holder extends Model
         return $model;
     }
 
+    protected static function booted()
+    {
+        static::updating(function ($holder) {
+            // Perform actions after a user has been updated
+            $holder->age = DateTime::createFromFormat('Y-m-d', $holder->birthday)
+                ->diff(new DateTime('now'))
+                ->y;
+            $holder->rate = $holder->age / 2;
+
+        });
+    }
+
     public function user() 
     {
         return $this->belongsTo(User::class, 'user_id');
