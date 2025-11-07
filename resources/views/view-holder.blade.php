@@ -30,7 +30,7 @@
                 <p><strong>Weekly Rate:</strong> ${{ $holder->rate }}</p>
                 <p><strong>Spend Percent:</strong> {{ $holder->spend_percent }}%</p>
                 <p><strong>Save Percent:</strong> {{ $holder->save_percent }}%</p>
-                <p><strong>Give Percent:</strong> {{ $holder->sgive_percent }}%</p>
+                <p><strong>Give Percent:</strong> {{ $holder->give_percent }}%</p>
                 <p><strong>User:</strong> {{ $holder->user->name }}</p>
             </div>
         </div>
