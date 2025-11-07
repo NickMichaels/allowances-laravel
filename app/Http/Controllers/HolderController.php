@@ -28,6 +28,17 @@ class HolderController extends Controller
         return redirect('/');
     }
 
+    public function viewHolder(Holder $holder) {
+        if (auth()->user()->id !== 1) {
+            return redirect('/');
+        }
+        $accounts = [];
+        if (auth()->check()) {
+            $accounts = $holder->accounts;
+        }
+        return view('view-holder',['holder' => $holder, 'accounts' => $accounts]);
+    }
+
     public function showCreateScreen() {
         if (auth()->user()->id !== 1) {
             return redirect('/');

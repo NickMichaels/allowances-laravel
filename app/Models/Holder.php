@@ -12,7 +12,8 @@ class Holder extends Model
 
     protected $fillable = ['name', 'birthday', 'age', 'rate', 'spend_percent', 'save_percent', 'give_percent', 'user_id'];
 
-    public static function create($data) {
+    public static function create($data) 
+    {
         // Statically generate the age and rate
         $age = DateTime::createFromFormat('Y-m-d', $data['birthday'])
             ->diff(new DateTime('now'))
@@ -27,8 +28,14 @@ class Holder extends Model
         return $model;
     }
 
-    public function user() {
+    public function user() 
+    {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function accounts()
+    {
+        return $this->hasMany(Account::class);
     }
 
 }
