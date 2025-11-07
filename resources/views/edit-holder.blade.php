@@ -4,6 +4,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        a.button {
+            padding: 1px 6px;
+            border: 1px outset buttonborder;
+            border-radius: 3px;
+            color: buttontext;
+            background-color: buttonface;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
     <div style="border : 3px solid black;">
@@ -44,6 +54,7 @@
             <br/>
 
             <button>Edit Account Holder</button>
+            <a href="/" class="button">Back</a>
         </form>
     </div>
 </body>
