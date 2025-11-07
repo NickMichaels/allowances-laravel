@@ -22,8 +22,7 @@
             <h2>All Account Holders</h2>
             @foreach($holders as $holder)
                 <div style="background-color: gray; padding: 10px; margin: 10px;">
-                    <h3>{{$holder->name}}</h3>
-                    <p><a href="/edit-holder/{{$holder->id}}">Edit</a></p>
+                    <h3>{{$holder->name}} | <a href="/view-holder/{{$holder->id}}">View</a> | <a href="/edit-holder/{{$holder->id}}">Edit</a></h3>
                     <form action="/delete-holder/{{$holder->id}}" method="POST">
                         @csrf
                         @method('DELETE')
