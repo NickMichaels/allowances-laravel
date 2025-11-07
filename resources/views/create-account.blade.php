@@ -22,6 +22,8 @@
                     <option value="{{ $key }}">{{ $value }}</option>
                 @endforeach
             </select>
+            <br/>
+            <br/>
             <label for="holder_id">Select an Account Holder</label>
             <br/>
             <select name="holder_id" id="holder_id">
