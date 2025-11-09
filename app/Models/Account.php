@@ -11,5 +11,5 @@ class Account extends Model
         'account_type' => AccountType::class,
     ];
 
-    protected $fillable = ['nickname', 'account_type', 'holder_id'];
+    protected $fillable = ['nickname', 'account_type', 'user_id'];
 }

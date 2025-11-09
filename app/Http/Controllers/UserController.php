@@ -35,7 +35,6 @@ class UserController extends Controller
         $incomingFields['age'] = $age;
         $incomingFields['rate'] = $rate;
 
-
         $user = User::create($incomingFields);
         auth()->login($user);
 

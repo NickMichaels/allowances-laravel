@@ -3,9 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Account;
+use App\Enums\AccountType;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -21,12 +23,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'birthday', 
-        'age', 
-        'rate', 
-        'spend_percent', 
-        'save_percent', 
-        'give_percent', 
+        'birthday',
+        'age',
+        'rate',
+        'spend_percent',
+        'save_percent',
+        'give_percent',
     ];
 
     /**
@@ -38,6 +40,25 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public static function create($data)
+    {
+        $model = static::query()->create($data);
+
+        // Now create accounts for the user
+        $account_types = AccountType::values();
+
+        foreach ($account_types as $k => $v) {
+            $account_data = [
+                'nickname' => $data['name'] . "'s " . ucfirst($k) . " Account",
+                'account_type' => $k,
+                'user_id' => $model->id,
+            ];
+            $user = Account::create($account_data);
+        }
+
+        return $model;
+    }
 
     /**
      * Get the attributes that should be cast.

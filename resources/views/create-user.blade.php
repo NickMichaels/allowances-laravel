@@ -7,7 +7,16 @@
 </head>
 <body>
     <div style="border : 3px solid black;">
-        <h1>Create a New Account Holder</h1>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <h1>Create a New User</h1>
         <form action="/register" method="POST">
             @csrf
             <label for="name">Name</label>
