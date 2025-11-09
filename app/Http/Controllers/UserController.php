@@ -2,20 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
+    public function showCreateScreen() {
+        return view('create-user');
+    }
+
     public function register(Request $request) {
         $incomingFields = $request->validate([
             'name' => ['required','min:3', 'max:10', Rule::unique('users','name')],
             'email' => ['required','email', Rule::unique('users', 'email')],
             'password' => ['required','min:8', 'max:200'],
+            'name' => 'required',
+            'birthday' => 'required',
+            'spend_percent' => 'required',
+            'save_percent' => 'required',
+            'give_percent' => 'required',
         ]);
 
         $incomingFields['password'] = bcrypt($incomingFields['password']);
+        // Statically generate the age and rate
+        $age = DateTime::createFromFormat('Y-m-d', $incomingFields['birthday'])
+            ->diff(new DateTime('now'))
+            ->y;
+        $rate = $age / 2;
+
+        $incomingFields['age'] = $age;
+        $incomingFields['rate'] = $rate;
+
+
         $user = User::create($incomingFields);
         auth()->login($user);
 

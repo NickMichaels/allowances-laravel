@@ -86,8 +86,6 @@ class HolderController extends Controller
             'give_percent' => 'required',
         ]);
 
-        $incomingFields['title'] = strip_tags($incomingFields['name']);
-
         $holder->update($incomingFields);
         return redirect('/');
     }

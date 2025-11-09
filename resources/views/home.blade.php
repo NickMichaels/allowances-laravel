@@ -7,49 +7,24 @@
 <body>
 
     @auth
-    <p> Congrats! you are logged in!</p>
-    <form action="/logout" method="POST">
-        @csrf
-        <button>Log out</button>
-    </form>
-
-    @if(auth()->id() === 1)
-        <div style="border : 3px solid black;">
-            <h2><a href="/create-holder/">Create a New Account Holder</a></h2>
-            <h2><a href="/create-account/">Create a New Account</a></h2>
-        </div>
-        <div style="border : 3px solid black;">
-            <h2>All Account Holders</h2>
-            @foreach($holders as $holder)
-                <div style="background-color: gray; padding: 10px; margin: 10px;">
-                    <h3>{{$holder->name}} | <a href="/view-holder/{{$holder->id}}">View</a> | <a href="/edit-holder/{{$holder->id}}">Edit</a></h3>
-                    <form action="/delete-holder/{{$holder->id}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button>Delete</button>
-                    </form>
-                </div>
-            @endforeach
-        </div>
+        <p> Congrats! you are logged in!</p>
+        <form action="/logout" method="POST">
+            @csrf
+            <button>Log out</button>
+        </form>
 
 
-    @else
         <div style="border : 3px solid black;">
             <h2><a href="/nowhere/">Future Features</a></h2>
         </div>
-    @endif
+
+        <!-- Show dropbox and table showing accounts -->
 
 
     @else
     <div style="border : 3px solid black;">
         <h2>Register</h2>
-        <form action="/register" method="POST">
-            @csrf
-            <input name="name" type="text" placeholder="name">
-            <input name="email" type="text" placehollder="email">
-            <input name="password" type="password" placeholder="password">
-            <button>Register</button>
-        </form>
+        <p><a href="create-user">Create a New User</a></p>
     </div>
     <div style="border : 3px solid black;">
     <h2>Log in</h2>

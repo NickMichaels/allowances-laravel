@@ -12,12 +12,12 @@ Route::get('/', function () {
     $holders = [];
     if (auth()->check()) {
         $users = User::where('id', '!=' , 1)->get();
-        $holders = Holder::all();
     }
-    return view('home', ['users' => $users, 'holders' => $holders]);
+    return view('home', ['users' => $users]);
 });
 
 // User registration routes
+Route::get('/create-user', [UserController::class, 'showCreateScreen']);
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/logout', [UserController::class, 'logout']);
 Route::post('/login', [UserController::class, 'login']);
@@ -31,5 +31,5 @@ Route::post('/create-holder', [HolderController::class, 'createHolder']);
 Route::get('/view-holder/{holder}', [HolderController::Class, 'viewHolder']);
 
 Route::get('/create-account', [AccountController::class, 'showCreateScreen']);
-Route::get('/edit-account', [HolderController::class, 'showEditScreen']);
+Route::get('/edit-account', [AccountController::class, 'showEditScreen']);
 Route::post('/create-account', [AccountController::class, 'createHolder']);
